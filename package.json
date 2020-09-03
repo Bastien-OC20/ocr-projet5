@@ -1,0 +1,23 @@
+{
+  "name": "oniroco-frontend",
+  "version": "1.0.0",
+  "description": "![alt-text](front-end/assets/img/logo.png)",
+  "main": "index.js",
+  "dependencies": {
+    "sass": "^1.26.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "sass": "sass --watch ./front-end/assets/sass/main.scss:./front-end/assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bastien-OC20/ocr-projet5.git"
+  },
+  "author": "Bast1en13-OC20",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bastien-OC20/ocr-projet5/issues"
+  },
+  "homepage": "https://github.com/Bastien-OC20/ocr-projet5#readme"
+}

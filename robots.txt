@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /https://bastien-oc20.github.io/ocr-projet5/sitemap.xml
