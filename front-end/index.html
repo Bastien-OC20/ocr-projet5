@@ -21,30 +21,41 @@
 		<meta name="twitter:title" content="Orinoco | Vente en ligne à thème" />
 		<meta name="twitter:description"
 			content="Orinoco est un site de vente en ligne à thème. Chaque vente se porte sur une catégorie de produits; textiles, jouets, montres et bien plus encore !!" />
-		<meta name="twitter:image" content="https://bastien-oc20.github.io/ocr-projet5/front-end/assets/img/logo-mini.png" />
+		<meta name="twitter:image"
+			content="https://bastien-oc20.github.io/ocr-projet5/front-end/assets/img/logo-mini.png" />
 		<!-- google search console -->
 		<meta name="google-site-verification" content="2wGkRx0bGhKXBm2TJGiUxICEtrstf13Ohpgz-oYkdFQ" />
 		<!-- Link -->
 		<link rel="canonical" href="https://bastien-oc20.github.io/ocr-projet5/">
-		<link rel="apple-touch-icon" href="./assets/img/apple-icon.png">
-		<link rel="shortcut icon" type="image/png" href="./assets/img/favicon.ico">
+		<link rel="apple-touch-icon" href="./assets/icons/apple-icon.png">
+		<link rel="shortcut icon" type="image/png" href="./assets/icons/favicon.ico">
 		<!-- CSS Bootstrap -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 		<!-- LinkStyle -->
 		<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 		<!-- JS, Popper.js, and jQuery -->
-<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<script src="./assets/js/index.js" charset="utf-8"></script>
+
+
+		<script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+			crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+			integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+			crossorigin="anonymous"></script>
+		<script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+			integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+			crossorigin="anonymous"></script>
 	</head>
 
 	<body>
 		<header class="container-fluid header">
 			<nav class="navbar navbar-expand-lg navbar-light">
 				<a class="navbar-brand" href="index.html">
-					<img class="img-fluid logo ml-lg-5" src="./assets/img/logo.png" alt="Logo Orinoco représentant un caddy"
-						title="Orinoco">
+					<img class="img-fluid logo ml-lg-5" src="./assets/img/logo.png"
+						alt="Logo Orinoco représentant un caddy" title="Orinoco">
 				</a>
 				<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 					aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,30 +92,19 @@
 		<main class="container main">
 			<header class="row baseline">
 				<h2 class="col-lg-12 text-center">Orinoco, site de vente en ligne!</h2>
-				<p class="col-lg-12 text-center">Chaque vente est unique !</p>
+				<p class="col-lg-12 text-center"></p>
 				<p></p>
 			</header>
 			<!-- vente en cours-->
-				<article class="col-lg-8 mx-auto ">
-					<h3 class="text-center vente">Vente en cours </h3>
-					<div class="card mx-auto border-0 mt-3">
-						<img src="#" class="card-img-top img-fluid" alt="Camera vintage"
-							title="appareil photo retro" aria-labelledby="appareil photo retro">
-						<div class="card-body ">
-							<h4 class="card-title">Appareil photo </h4>
-							<h5 class="card-subtitle">vintage</h5>
-							<p class="card-text">Du texte sous le titre dans le corps de carte</p>
-							<a href="./pages/products.html" alt="accéder à la vente en cours" title="vente en cours"
-								aria-labelledby="vente en cours" class="btn btn-primary">Vente en cours</a>
-						</div>
-					</div>
-				</article>
+
+			<section id="allProducts" class="row d-flex justify-content-around deco"></section>
+
 		</main>
 
 		<footer class="container-fluid footer">
 			<section class="row">
-				<img class="img minilogo  mx-auto" src="./assets/img/logo-mini.png" alt="Logo Orinoco représentant un caddy"
-					title="Orinoco">
+				<img class="img minilogo  mx-auto" src="./assets/img/logo-mini.png"
+					alt="Logo Orinoco représentant un caddy" title="Orinoco">
 
 				<article class="col-lg-12 d-flex justify-content-center">
 					<!--Facebook-->
@@ -186,14 +186,15 @@
 				<a class="btn col-4 d-flex justify-content-start" href="./pages/mention.html" alt="mentions légales"
 					title="Accéder à la page des mentions légales"
 					aria-labelledby="Accéder à la page des mentions légales">
-					<p class="deco shake">Mentions-légales</p>
+					<p class="deco shake">Mentions légales</p>
 				</a>
 				<a class=" btn col-4 d-flex justify-content-center"></a>
 				<a class=" btn  col-4 d-flex justify-content-end" alt="Contacts" title="Accéder à la page des contacts"
 					aria-labelledby="Accéder à la page des contacts" href="./pages/contact.html">
-					<p class="deco shake">Nous-contacter</p>
+					<p class="deco shake">Nous contacter</p>
 				</a>
 			</article>
 		</footer>
 	</body>
+
 </html>
