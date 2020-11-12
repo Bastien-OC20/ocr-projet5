@@ -14,7 +14,6 @@ response.json())
 <img class="image card-img-top p-3" src="${products[i].imageUrl}" alt="Camera ${products[i].name}" title="Camera ${products[i].name}">
 <div class="card-body">
 <h3 class="product card-title">${products[i].name}</h3>
-<p class="description card-text">${products[i].description}</p>
 <p class="price card-text">${products[i].price / 100} €</p>
 <button class="btn btn-light" type="button"><a href="./pages/produit.html?id=${products[i]._id}">Voir Produit</a> </button>
 </div>

@@ -16,6 +16,7 @@ fetch('http://localhost:3000/api/cameras')
             if (cameraProduct[i]._id == cameraId) {
                 element._id = cameraProduct[i]._id;
                 element.name = cameraProduct[i].name;
+                element.lense = cameraProduct[i].lenses;
                 element.price = cameraProduct[i].price / 100;
                 element.url = cameraProduct[i].imageUrl;
                 product.innerHTML +=
@@ -28,8 +29,15 @@ fetch('http://localhost:3000/api/cameras')
         <strong>Description : </strong>
         </br>${cameraProduct[i].description}
         </div>
+        <div>
+        <a class="btn btn-primary dropdown-toggle data-toggle=dropdown"> Sélectionnez une taille de lentille : <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+<li class="dropdown-item">${cameraProduct[i++].lenses}</li>
+
+</ul>
+        </div>
         <div class="productPrice card-text p-2">
-        <h4>Prix : </h4>${cameraProduct[i].price / 100} €
+        <h4>Prix : <span>${cameraProduct[i].price / 100} € </span></h4>
         </div>
         <div class="allBtn">
           <button class="btn"><a href="../index.html">Retour</a></button>
