@@ -1,5 +1,5 @@
- fetch('http://localhost:3000/api/cameras').then(response =>
-response.json())
+fetch('https://oc-p5-api.herokuapp.com/api/cameras')
+.then(response =>response.json())
 .then(products => {
   console.log(products) 
   return new Promise(function (resolve, reject) {
@@ -9,25 +9,45 @@ response.json())
               if (request.status === 200) {
                   resolve(JSON.parse(request.responseText));
                   for (let i = 0; i < products.length; i++) {
-      allProducts.innerHTML +=
-        `<article class="products card col-lg-4 m-5">
-<img class="image card-img-top p-3" src="${products[i].imageUrl}" alt="Camera ${products[i].name}" title="Camera ${products[i].name}">
-<div class="card-body">
-<h3 class="product card-title">${products[i].name}</h3>
-<p class="price card-text">${products[i].price / 100} €</p>
-<button class="btn btn-light" type="button"><a href="./pages/produit.html?id=${products[i]._id}">Voir Produit</a> </button>
-</div>
-</article>`
-      console.log('Bravo ! Vous êtes connecté au serveur !');
-    }
-    // Why ?........
+                    let myArticle = document.createElement('article')
+    allProducts.appendChild(myArticle) 
+myArticle.setAttribute('class', 'card')
+let img = document.createElement('img')
+let H3 = document.createElement('h3')
+
+let P1 = document.createElement('p')
+let button = document.createElement('BUTTON')
+
+img.src = products[i].imageUrl
+H3.textContent =  products[i].name
+P1.textContent = 'Prix: '+ (products[i].price / 100)+ '€'
+button.textContent = 'Voir le produit'
+
+myArticle.appendChild(img)
+myArticle.appendChild(H3)
+myArticle.appendChild(P1)
+myArticle.appendChild(button)
+
+
+myArticle.setAttribute('class', 'padding:3em  products  card col-lg-4  m-5')
+img.setAttribute('class', 'image card-img-top p-3')
+img.setAttribute('title', products[i].name)
+H3.setAttribute('class', 'product card-title')
+P1.setAttribute('class', 'price card-text')
+button.setAttribute('class','btn btn-light mb-3 w-4')
+}
+      console.log('connecté au serveur');
+    
+}
+    // Why  error ?.....
               } else {
                   reject(console.log('erreur :' + error));
               }
           }
           
-      };
-      request.open("GET", 'http://localhost:3000/api/cameras');
+     
+      request.open("GET",'https://oc-p5-api.herokuapp.com/api/cameras');
       request.send();
-  });
-});
+  })
+  
+})
