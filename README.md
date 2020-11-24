@@ -49,13 +49,11 @@ Ce projet s'inscrit dans le cadre de la formation "Développeur web" proposée p
 
 - Clonez [https://github.com/OpenClassrooms-Student-Center/JWDP5.git](https://github.com/OpenClassrooms-Student-Center/JWDP5.git) sur votre ordinateur.
 
-- Pour lancer le serveur sur votre ordinateur vous devez d'abord vous placer avec l'invite de commande (CMD) sur le dossier 'back-end' Ensuite lancez le serveur avec node server Si tout est bien installé vous devriez voir Listening on port 3000 & Succesfully connected to MongoDB Atlas.
-- Ouvrir votre navigateur à l'adresse http://localhost:300/
-- vérifiez si les URl des API fonnctionnent :
+- Pour simplifier l'accéssibilité au Projet 5 : Orinoco , j'ai choisis d'utiliser l'URL https://oc-p5-api.herokuapp.com/api/cameras
 #### URL des API
-* Ours en peluche faits à la main : http://localhost:3000/api/teddies
-* Caméras vintage : http://localhost:3000/api/cameras
-* Meubles en chêne : http://localhost:3000/api/furniture
+
+* Caméras vintage : https://oc-p5-api.herokuapp.com/api/cameras
+
 
 
 - **Si erreur : Vérifiez que tous les composants sont installés. Voir la boite à outils**
