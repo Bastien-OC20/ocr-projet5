@@ -6,46 +6,59 @@ let cameraId = link.split('=')[1];
 
 let element = {};
 
+
 //affichage du produit
-fetch('http://localhost:3000/api/cameras')
-    .then(response => response.json())
-    .then(cameraProduct => {
-        const product = document.querySelector('#product');
+fetch('https://oc-p5-api.herokuapp.com/api/cameras')
+.then(response =>response.json())
+.then(camera => {
+  console.log(camera) 
+  return new Promise(function (resolve, reject) {
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+          if (request.readyState === XMLHttpRequest.DONE) {
+              if (request.status === 200) {
+                  resolve(JSON.parse(request.responseText));
+                  for (let i = 0; i < camera.length; i++) {
+                    let myArticle = document.createElement('article')
+    Product.appendChild(myArticle) 
 
-        for (let i = 0; i < cameraProduct.length; i++) {
-            if (cameraProduct[i]._id == cameraId) {
-                element._id = cameraProduct[i]._id;
-                element.name = cameraProduct[i].name;
-                element.lense = cameraProduct[i].lenses;
-                element.price = cameraProduct[i].price / 100;
-                element.url = cameraProduct[i].imageUrl;
-                product.innerHTML +=
-                    `<article class="cameraProduct col-lg-8 card ">
-      <img class="productImage card-img-top p-3" src="${cameraProduct[i].imageUrl}">
-        <div class="card-body">
-        <h3 class="productName card-title p-2">${cameraProduct[i].name}
-        </h3>
-        <div class="productDescription card-text p-2">
-        <strong>Description : </strong>
-        </br>${cameraProduct[i].description}
-        </div>
-        <div>
-        <a class="btn btn-primary dropdown-toggle data-toggle=dropdown"> Sélectionnez une taille de lentille : <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-<li class="dropdown-item">${cameraProduct[i++].lenses}</li>
+let img = document.createElement('img')
+let H3 = document.createElement('h3')
+let desc = document.createElement('p')
+let P1 = document.createElement('p')
+let lent = document.createElement ('label')
+let option = document.createElement('select')
+let button = document.createElement('button')
+let link = document.createElement('a')
 
-</ul>
-        </div>
-        <div class="productPrice card-text p-2">
-        <h4>Prix : <span>${cameraProduct[i].price / 100} € </span></h4>
-        </div>
-        <div class="allBtn">
-          <button class="btn"><a href="../index.html">Retour</a></button>
-          <button class="btn" id="panier"><a href="../pages/basket.html">Ajouter au panier</a></button>
-          </div>
-          </div>
-        </article>`
+img.src = camera[i].imageUrl
+H3.textContent =  camera[i].name
+desc.textContent = camera[i].description
+lent.textContent = 'choisir sa lentille'
+option.textContent= camera[i].lenses
+P1.textContent = 'Prix: '+ (camera[i].price / 100)+ '€'
+button.textContent = 'ajouter au panier'
+link.href = camera[i]._id
 
-            }
-            }
-        });
+myArticle.appendChild(img)
+myArticle.appendChild(H3)
+myArticle.appendChild(P1)
+lent.appendChild(label)
+option.appendChild(select)
+myArticle.appendChild(button)
+button.appendChild(link)
+
+
+myArticle.setAttribute('class', 'products card col-lg-4 p-3 m-5')
+img.setAttribute('class', 'image card-img-top p-3')
+img.setAttribute('title', camera[i].name)
+H3.setAttribute('class', 'product card-title')
+P1.setAttribute('class', 'price card-text')
+button.setAttribute('class','btn btn-light w-50 m-auto')
+
+}
+}
+          }
+        }
+    })
+})
