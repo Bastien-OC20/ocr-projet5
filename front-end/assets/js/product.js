@@ -1,64 +1,104 @@
-//Récupère lien get
-let link = location.href;
-
-//récupère id
-let cameraId = link.split('=')[1];
-
-let element = {};
 
 
-//affichage du produit
-fetch('https://oc-p5-api.herokuapp.com/api/cameras')
-.then(response =>response.json())
-.then(camera => {
-  console.log(camera) 
-  return new Promise(function (resolve, reject) {
-      let request = new XMLHttpRequest();
-      request.onreadystatechange = function () {
-          if (request.readyState === XMLHttpRequest.DONE) {
-              if (request.status === 200) {
-                  resolve(JSON.parse(request.responseText));
-                  for (let i = 0; i < camera.length; i++) {
-                    let myArticle = document.createElement('article')
-    Product.appendChild(myArticle) 
+//*Création de la variable contenant l'id
+const params = new URLSearchParams(window.location.search);
+let camId = params.get("id");
 
-let img = document.createElement('img')
-let H3 = document.createElement('h3')
-let desc = document.createElement('p')
-let P1 = document.createElement('p')
-let lent = document.createElement ('label')
-let option = document.createElement('select')
-let button = document.createElement('button')
-let link = document.createElement('a')
-
-img.src = camera[i].imageUrl
-H3.textContent =  camera[i].name
-desc.textContent = camera[i].description
-lent.textContent = 'choisir sa lentille'
-option.textContent= camera[i].lenses
-P1.textContent = 'Prix: '+ (camera[i].price / 100)+ '€'
-button.textContent = 'ajouter au panier'
-link.href = camera[i]._id
-
-myArticle.appendChild(img)
-myArticle.appendChild(H3)
-myArticle.appendChild(P1)
-lent.appendChild(label)
-option.appendChild(select)
-myArticle.appendChild(button)
-button.appendChild(link)
+//*Appel du produit séléctionné
+let mesVariables; 
 
 
-myArticle.setAttribute('class', 'products card col-lg-4 p-3 m-5')
-img.setAttribute('class', 'image card-img-top p-3')
-img.setAttribute('title', camera[i].name)
-H3.setAttribute('class', 'product card-title')
-P1.setAttribute('class', 'price card-text')
-button.setAttribute('class','btn btn-light w-50 m-auto')
+//* Récupération des données du produit séléctionné
+ function recupCamera(){
+    fetch(url + '/' + camId).then(function(response){
+        response.json().then(function(camera){
+            mesVariables = camera;
 
-}
-}
-          }
+//* Emplacement des données 
+                let myArticle = document.createElement('article')
+                cameraProduct.appendChild(myArticle)
+
+//* Template : page camera
+                    let img = document.createElement('img')
+                    let div1 = document.createElement('div')
+                    let H3 = document.createElement('h3')
+                    let div2 = document.createElement('div')
+                    let P1 = document.createElement('p')
+                    let Label = document.createElement('label')
+                    let H4 = document.createElement('h4')
+                    let Select = document.createElement('select')
+                    let allBtn = document.createElement('div')
+                    let btn1 = document.createElement('button')
+                    let btn2 = document.createElement('button')
+                    let link1 = document.createElement('a')
+                    let link2 = document.createElement('a')
+
+
+
+//*  Affichage des données
+                    img.src = camera.imageUrl
+                    H3.textContent = camera.name
+                    P1.textContent = "Prix: " + camera.description
+                    Label.textContent = " Choix de l'objectif :  "
+                    H4.textContent = camera.price / 100 + '€'
+                    btn1.textContent = "Retour"
+                    btn2.textContent = "Ajouter au panier"
+                    link1.href = '../index.html'
+                    link2.href = "../pages/basket.html"
+
+
+
+//*  Attibutions des class Bootstrap
+                    myArticle.setAttribute('class', 'cameraProduct col-lg-8 card')
+                    img.setAttribute('class', 'image card-img-top p-3')
+                    div1.setAttribute('class', 'card-body')
+                    H3.setAttribute('class', 'card-title display-4')
+                    div2.setAttribute('class', 'card-text p-2')
+                    P1.setAttribute('class', 'blockquote')
+                    Label.setAttribute('class', 'select p-2 ')
+                    Select.setAttribute('id', 'option')
+                    allBtn.setAttribute('class', 'allBtn')
+                    btn1.setAttribute('class', 'btn')
+                    btn2.setAttribute('class', 'btn')
+                    link1.setAttribute('class', 'text-center select')
+                    link2.setAttribute('class', 'text-center select')
+
+
+//*  FlowChart
+                    myArticle.appendChild(img)
+                    myArticle.appendChild(div1)
+                    div1.appendChild(H3)
+                    div1.appendChild(div2)
+                    div2.appendChild(P1)
+                    div2.appendChild(Label)
+                    Label.appendChild(H4)
+                    Label.appendChild(Select)
+                    div2.appendChild(H4)
+                    div1.appendChild(allBtn)
+                    allBtn.appendChild(link1)
+                    allBtn.appendChild(link2)
+                    link1.appendChild(btn1)
+                    link2.appendChild(btn2)
+
+
+
+                    //*  Choix des lentilles 
+                    let selectLense = document.getElementById('option')
+
+                    camera.lenses.forEach(lense => {
+                        let option = document.createElement("option");
+                        selectLense.appendChild(option);
+                option.setAttribute("value", "Type de lentille");
+                option.textContent = lense;
+                })
+
+                    console.log(camera.name)
+                    console.log(camera.lenses)
+                })
+            })
         }
-    })
-})
+        recupCamera()
+
+
+
+
