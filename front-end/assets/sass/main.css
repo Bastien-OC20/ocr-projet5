@@ -89,13 +89,14 @@ body .footer {
   border: 1px solid #A68FA1;
   border-radius: 25px 25px 0px 0px;
   background-color: #F3E9F1;
-  padding: 1em;
-  height: 10em;
+  padding-bottom: 0.5em;
+  min-height: 7em;
   text-shadow: 0.1em 0.1em 0.2em rgba(190, 188, 188, 0.322);
 }
 
 body .footer .minilogo {
   margin: 0.2em;
+  width: 8em;
 }
 
 body .footer .zoom {
@@ -113,12 +114,17 @@ body .footer .zoom:hover {
 
 body .footer .shake {
   font-size: 1em;
-  padding-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 body .footer .shake:hover {
   animation: headshake 100ms cubic-bezier(0.4, 0.1, 0.6, 0.9);
   animation-iteration-count: 4;
   text-shadow: 0.1em 0.1em 0.2em rgba(190, 188, 188, 0.322);
+}
+
+body .footer span {
+  margin-top: 0.5em;
+  height: 1.5em;
 }
 /*# sourceMappingURL=main.css.map */

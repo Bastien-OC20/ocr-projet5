@@ -70,12 +70,13 @@ body {
         border: 1px solid $annonce-bg;
         border-radius: 25px 25px 0px 0px;
         background-color: $footer-bg;
-        padding: 1em;
-        height: 10em;
+       padding-bottom: 0.5em;
+        min-height: 7em;
         @include text-shadow;
 
         .minilogo {
             margin: 0.2em;
+            width: 8em;
         }
 
         .zoom {
@@ -93,13 +94,18 @@ body {
 
         .shake {
             font-size: 1em;
-            padding-bottom: 1em;
+            margin-bottom: 0.5em;
         }
 
         
         .shake:hover {
             @include headshake;
             @include text-shadow;
+        }
+
+        span {
+            margin-top: 0.5em;
+            height: 1.5em;
         }
     }
 }
