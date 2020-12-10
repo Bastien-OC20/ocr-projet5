@@ -18,10 +18,10 @@ body .deco {
 }
 
 body .header {
-  background-color: #F3E9F1;
+  background-color: #00B7C3;
   margin: 0em;
   padding: 0em;
-  border: 1px solid #A68FA1;
+  border: 1px solid #F7630C;
   border-radius: 0px 0px 25px 25px;
 }
 
@@ -30,21 +30,21 @@ body .header nav {
 }
 
 body .header nav .logo {
-  width: 100%;
+  width: 60%;
 }
 
-body .header nav .listBlock {
+body .header nav div {
   justify-content: right;
 }
 
-body .header nav .listMenu {
-  margin-right: 5em;
+body .header nav li {
+  margin-right: 1em;
 }
 
 body .main {
   padding: 1em;
   margin-top: 1em;
-  margin-bottom: 15em;
+  margin-bottom: 13em;
 }
 
 body .main .baseline {
@@ -86,11 +86,11 @@ body .main .card {
 body .footer {
   position: fixed;
   bottom: 0;
-  border: 1px solid #A68FA1;
+  border: 1px solid #F7630C;
   border-radius: 25px 25px 0px 0px;
-  background-color: #F3E9F1;
-  padding-bottom: 0.5em;
-  min-height: 7em;
+  background-color: #00B7C3;
+  min-height: 5em;
+  max-height: 13em;
   text-shadow: 0.1em 0.1em 0.2em rgba(190, 188, 188, 0.322);
 }
 
@@ -113,8 +113,7 @@ body .footer .zoom:hover {
 }
 
 body .footer .shake {
-  font-size: 1em;
-  margin-bottom: 0.5em;
+  font-size: 1.5em;
 }
 
 body .footer .shake:hover {
@@ -124,7 +123,6 @@ body .footer .shake:hover {
 }
 
 body .footer span {
-  margin-top: 0.5em;
-  height: 1.5em;
+  height: 3em;
 }
 /*# sourceMappingURL=main.css.map */

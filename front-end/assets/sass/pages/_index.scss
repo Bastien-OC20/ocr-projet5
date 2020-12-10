@@ -5,6 +5,7 @@ body {
         font-family: $font1;
         font-size: 1.5em;
     }
+
     .header {
         background-color: $header-bg;
         margin: 0em;
@@ -14,21 +15,21 @@ body {
         nav {
             padding: 1em;
             .logo {
-                width: 100%;
+                width: 60%;
 
             }
-            .listBlock {
+            div {
                 justify-content: right;
             }
-            .listMenu {
-                margin-right: 5em;
+            li {
+                margin-right: 1em;
             }
         }
     }
     .main {
         padding: 1em;
         margin-top: 1em;
-        margin-bottom: 15em;
+        margin-bottom: 13em;
 
         .baseline {
             margin: 1em;
@@ -70,8 +71,8 @@ body {
         border: 1px solid $annonce-bg;
         border-radius: 25px 25px 0px 0px;
         background-color: $footer-bg;
-       padding-bottom: 0.5em;
-        min-height: 7em;
+       min-height : 5em;
+        max-height: 13em;
         @include text-shadow;
 
         .minilogo {
@@ -93,19 +94,15 @@ body {
         }
 
         .shake {
-            font-size: 1em;
-            margin-bottom: 0.5em;
+            font-size: 1.5em;
         }
 
-        
         .shake:hover {
             @include headshake;
             @include text-shadow;
         }
-
-        span {
-            margin-top: 0.5em;
-            height: 1.5em;
+        span{
+            height : 3em;
         }
     }
 }
