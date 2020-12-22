@@ -32,7 +32,6 @@
         <!-- CSS Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
         <!-- LinkStyle -->
         <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
         <!-- JS, Popper.js, and jQuery -->
@@ -79,7 +78,7 @@
                                 </svg>
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item " href="#" id="nbrArticle"></a>
+                                <a class="dropdown-item " href="#"></a>
                                 <a class="dropdown-item " href="../pages/basket.html" alt="panier"
                                     title="Voir mon panier" aria-labelledby="Voir mon panier">Voir mon panier<span
                                         class="sr-only">(current)</span></a>
@@ -89,13 +88,86 @@
                 </div>
             </nav>
         </header>
-
         <main class="container main">
-            <h2 id="Cart"> </h2>
-            <section id="panier" class=" col d-flex justify-content-center order-2"></section>
+            <h2 class="text-center">Votre panier</h2>
+            <div class="container">
+                <div id="tableauPanier" class="card border-dark">
+                    <table class="table bg-light">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Produit</th>
+                                <th>Objectif</th>
+                                <th>Quantité</th>
+                                <th>Prix</th>
+                                <th>Prix total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="afficheProduitPanier">
+                        </tbody>
+                    </table>
+                    <h4 class="font-weight-bold" id="affichageTotal">Total panier</h4>
+                    <div class="d-flex justify-content-end">
+                        <button id="empty" class="col-lg-4 btn btn-dark">Supprimer mon panier</button>
+                    </div>
+                </div>
+                <br>
+                <div class="card border-dark form-container">
+                    <div class="card-header text-center bg-light">
+                        <h2>Vos coordonnées</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="form-row my-3">
+                                <label for="firstName" class="col-md-2 col-form-label">Prénom</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="firstName" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
+                                <label for="lastName" class="col-md-2 col-form-label">Nom</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="lastName" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
+                                <label for="inputEmail" class="col-md-2 col-form-label">Email</label>
+                                <div class="col-md-5">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
+                                <label for="telephoneNumber" class="col-md-2 col-form-label">Téléphone</label>
+                                <div class="col-md-5">
+                                    <input type="tel" maxlength="10" class="form-control" id="telephoneNumber"
+                                        placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
+                                <label for="inputAddress" class="col-md-2 col-form-label">Adresse</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="form-row my-3">
+                                <label for="inputCity" class="col-md-2 col-form-label">Ville</label>
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="inputCity" placeholder="" />
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn order-submit disabled">
+                                    Confirmer mes coordonnées
+                                </button>
 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="confirmation.html"
+                    class="btn btn-success validation col-6 offset-3 col-md-4 offset-md-4 my-4 disabled">Valider ma
+                    commande</a>
+            </div>
         </main>
-
         <footer class="container-fluid footer">
             <section class="row">
                 <img class="img minilogo  mx-auto" src="../assets/img/logo-mini.png"
@@ -105,7 +177,6 @@
 
                 </article>
             </section>
-
             <article class="row">
                 <span class="  col-lg-4 d-flex justify-content-center ">
                     <!--Facebook-->
@@ -180,8 +251,8 @@ c0-1.767,1.434-3.2,3.2-3.2H53.6c1.768,0,3.2,1.432,3.2,3.2V16.8z" />
                                 </g>
                             </g>
                         </svg>
-
-                    </a></span>
+                    </a>
+                </span>
                 <span class=" col-lg-4 d-flex justify-content-center  order-lg-first">
                     <a class="btn  order-first" href="../pages/mention.html" alt="mentions légales"
                         title="Accéder à la page des mentions légales"
@@ -198,7 +269,6 @@ c0-1.767,1.434-3.2,3.2-3.2H53.6c1.768,0,3.2,1.432,3.2,3.2V16.8z" />
             </article>
         </footer>
     </body>
-    <script src="../assets/js/function.js" charset="utf-8"></script>
     <script src="../assets/js/basket.js" charset="utf-8"></script>
 
 </html>

@@ -22,7 +22,7 @@ body .header {
   border-radius: 0px 0px 25px 25px;
 }
 body .header nav {
-  padding: 1em;
+  padding: 0.5em;
 }
 body .header nav .logo {
   width: 60%;
@@ -75,7 +75,7 @@ body .footer {
   border-radius: 25px 25px 0px 0px;
   background-color: #00B7C3;
   min-height: 5em;
-  max-height: 13em;
+  max-height: 11em;
   text-shadow: 0.1em 0.1em 0.2em rgba(190, 188, 188, 0.322);
 }
 body .footer .minilogo {
@@ -94,7 +94,7 @@ body .footer .zoom:hover {
   transform: scale(1.5);
 }
 body .footer .shake {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 body .footer .shake:hover {
   animation: headshake 100ms cubic-bezier(0.4, 0.1, 0.6, 0.9);

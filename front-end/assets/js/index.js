@@ -1,62 +1,74 @@
-//* Appel de l'API-------------------------------------------------------------
-async function recupUrl() {
-    get(url).then(function (response) {
-        let product = JSON.parse(response)
-        return product
-    }).catch(catchError)
-        .then(function (product) {
-            try {
-                affichageProduits(product)
+//* Création variable Url --------------------------------------------------------
+let url = "https://oc-p5-api.herokuapp.com/api/cameras"
 
-            } catch (err) {
-                catchErrorFunc(err)
+//* Récupèration des données de l'API avec fetch-----------------------------------
+fetch(url)
+    .then(camera => camera.json())
+    .then(camera => { // Promise //
+        return new Promise(function (resolve, reject) {
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                    if (request.status === 200) {
+                        resolve(JSON.parse(request.responseText))
+                        //* récupèration de chaque élément du tableau Array----------------------------------
+                        camera.forEach(({
+                            _id,
+                            name,
+                            price,
+                            description,
+                            imageUrl,
+                        }) => {
+                            //* Création variable container------------------------------------------------------
+                            let container = document.getElementById("allProducts")
+
+                            //* Template : page camera----------------------------------------------------------
+                            let div = document.createElement("div")
+                            let img = document.createElement("img")
+                            let h3 = document.createElement("h3")
+                            let h4 = document.createElement("h4")
+                            let p = document.createElement("p")
+                            let a = document.createElement("a")
+
+                            //* Création des "noeuds" du nom de l'appareil------------------------------------
+                            let elemName = document.createTextNode(name)
+                            let elemPrice = document.createTextNode(price / 100 + " €")
+                            let elemDescription = document.createTextNode(description)
+
+                            //* Affichage des données---------------------------------------------------------
+                            a.href = './pages/produit.html?id=' + _id
+                            a.textContent = "En savoir plus"
+                            img.src = imageUrl
+
+                            //* FlowChart-Hiérarchisation---------------------------------------------------
+                            container.appendChild(div)
+                            div.appendChild(img)
+                            div.appendChild(h3)
+                            div.appendChild(h4)
+                            div.appendChild(p)
+                            div.appendChild(a)
+                            h3.appendChild(elemName)
+                            h4.appendChild(elemPrice)
+                            p.appendChild(elemDescription)
+
+                            //* Attibutions des class Bootstrap--------------------------------------------------
+                            container.className = "d-flex flex-wrap justify-content-center lg-flex-row sm-flex-column mx-auto"
+                            div.className = "card col-lg-4 p-3 m-5"
+                            img.className = "card-img-top p-3 img-fluid w-100"
+                            a.className = "btn btn-secondary w-50 border m-auto"
+                        })
+
+                    } else {
+                        reject(console.log('erreur :' + error));
+                        reject(console.log(error));
+                    }
+                }
             }
-            return fetch(url)
+
+            request.open("GET", 'https://oc-p5-api.herokuapp.com/api/cameras');
+            request.send();
         })
-}
-recupUrl();
 
-// * index.html : affichage des cameras---------------------------------------------
-function affichageProduits(product) {
-    for (let i = 0; i < product.length; i++) {
-        console.log(product[i].name)
-        //* Emplacement des données---------------------------------------------------------
-        let myArticle = document.createElement('article')
-        allProducts.appendChild(myArticle)
-
-        //* Template : page camera----------------------------------------------------------
-        let img = document.createElement('img')
-        let H3 = document.createElement('h3')
-        let P1 = document.createElement('p')
-        let button = document.createElement('button')
-        let link = document.createElement('a')
-
-        //*  Affichage des données---------------------------------------------------------
-        img.src = product[i].imageUrl
-        H3.textContent = product[i].name
-        P1.textContent = 'Prix: ' + formatPrix(product[i].price) + '€'
-        button.textContent = 'Voir le produit'
-        link.href = './pages/produit.html?id=' + product[i]._id
-
-        //*  FlowChart-Hiérarchisation----------------------------------------------------
-        myArticle.appendChild(img)
-        myArticle.appendChild(H3)
-        myArticle.appendChild(P1)
-        myArticle.appendChild(link)
-        link.appendChild(button)
-
-        //*  Attibutions des class Bootstrap--------------------------------------------------
-        myArticle.setAttribute('class', 'products card col-lg-4 p-3 m-5')
-        img.setAttribute('class', 'image card-img-top p-3 img-fluid w-100')
-        img.setAttribute('title', product[i].name)
-        H3.setAttribute('class', 'product card-title')
-        P1.setAttribute('class', 'price card-text')
-        button.setAttribute('class', 'btn btn-secondary w-50 border')
-        link.setAttribute('class', 'text-center select')
-    }
-}
-nombreArticle(panier)
-console.log("Connexion à l'API " + url)
-
+    })
 
 

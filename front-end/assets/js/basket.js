@@ -1,113 +1,171 @@
-//* Variables------------------------------------------------------------------------
-let total = 0
-let cart_json = JSON.parse(localStorage.getItem("panier"))
+//* Fonction affichage produit -------------------------------------------------------
+function affichagePanier() {
+    //* Récupération du produit dans le localStorage "panier"
+    let panier = JSON.parse(localStorage.getItem("panier"))
+    let prixTotal = JSON.parse(localStorage.getItem("prixTotal"))
+    let prixPanier = document.getElementById('affichageTotal')
+    let tableauPanier = document.getElementById("afficheProduitPanier")
 
-//* Création du tableau du panier ---------------------------------------------------
+    //* affichage du prix total du panier------------------------------------------
+    if (prixTotal != null) {
 
-if (cart_json == 0) {
-    //* Message panier vide -----------------------------------------------------------
-    let emptyMessage = document.getElementById('panier')
-    let message = document.createElement('p')
-    emptyMessage.appendChild(message)
-    message.setAttribute('class', 'justify-content-center text-center')
-    message.innerHTML = "<h3>VOTRE PANIER EST VIDE </h3><br><a href='../index.html' ><button class='btn btn-light w-auto border'>Retour</a></button>"
-
-} else {
-    //* Titre de la page -------------------------------------------------------------
-    let titleCart = document.getElementById('Cart')
-    let title = document.createElement('h2')
-    titleCart.appendChild(title)
-    title.setAttribute('class', 'col justify-content-center text-center pb-5')
-    title.textContent = "Votre panier contient " + panier.length + " article(s)"
-
-    let table = document.getElementById("panier")
-    //* Template du tableau -------------------------------------------------------
-    let tableCart = document.createElement('table')
-    let tableCartHead = document.createElement('thead')
-    let tableCartHeadTitle = document.createElement('tr')
-    let tableCartHeadImg = document.createElement("th")
-    let tableCartHeadName = document.createElement("th")
-    let tableCartHeadCost = document.createElement("th")
-    let tableCartHeadOption = document.createElement("th")
-    let tableCartFootTitle = document.createElement('tr')
-    let tableCartFootTotal = document.createElement('td')
-    let tableCartFootTotalCost = document.createElement('td')
-
-    //*  Attibutions des class Bootstrap------------------------------------------------
-    tableCart.setAttribute('class', 'table table-hover')
-    tableCartHead.setAttribute('class', "thead-dark")
-    tableCartHeadImg.setAttribute('scope', 'col')
-    tableCartHeadName.setAttribute('scope', 'col')
-    tableCartHeadCost.setAttribute('scope', 'col')
-    tableCartHeadOption.setAttribute('scope', 'col')
-    tableCartFootTotal.setAttribute("scope", "row")
-
-    //*  FlowChart-Hiérarchisation------------------------------------------------------
-    table.appendChild(tableCart)
-    tableCart.appendChild(tableCartHead)
-    tableCartHead.appendChild(tableCartHeadTitle)
-    tableCartHeadTitle.appendChild(tableCartHeadImg)
-    tableCartHeadTitle.appendChild(tableCartHeadName)
-    tableCartHeadTitle.appendChild(tableCartHeadCost)
-    tableCartHeadTitle.appendChild(tableCartHeadOption)
+        let div = document.createElement("div")
+        afficheProduitPanier.appendChild(div)
+        prixPanier.textContent = 'Le montant total de votre commande est de : ' + prixTotal + ' €';
+        prixPanier.id = 'prixTotal'
 
 
-    //* Déclaration des titres des colonnes -------------------------------------------
-    tableCartHeadImg.textContent = "Article(s)"
-    tableCartHeadName.textContent = "Nom(s)"
-    tableCartHeadCost.textContent = "Prix"
-    tableCartHeadOption.textContent = "Option"
+    } else {
+        prixPanier.textContent = 'Le montant de votre commande est de : 0 €'
+    }
 
-    //* Création du Template des articles --------------------------------------------
-    cart_json.forEach((article, index) => {
-        let articleBody = document.createElement('tbody')
-        let articleBodyLigne = document.createElement("tr")
-        let articleBodytitle = document.createElement('th')
-        let articleBodyImg = document.createElement("img")
-        let articleBodyNom = document.createElement("td")
-        let articleBodyPrix = document.createElement("td")
-        let articleBodyOption = document.createElement("td")
-        let bodyOption = document.createElement("i", "id", index)
 
-        // *Attributs suplémentaires --------------------------------------------------
-        articleBodytitle.setAttribute('scope', 'row')
-        articleBodyImg.setAttribute("class", 'p-2')
-        articleBodyImg.setAttribute('style', 'width: 8em')
-        articleBodyOption.setAttribute('class', 'text-center')
-        bodyOption.setAttribute("alt", "Retirer l'article du panier.")
-        bodyOption.setAttribute("class", "fas fa-trash")
-        tableCartFootTitle.setAttribute('scope', 'row')
-        tableCartFootTitle.setAttribute('class', 'table-info ')
-        tableCartFootTotal.setAttribute('id', 'TotalCost')
-        tableCartFootTotal.setAttribute('colspan', '4')
-        tableCartFootTotal.setAttribute('class', 'text-right font-weight-bold')
+    if (panier == null) {
+        let div = document.createElement("div")
+        afficheProduitPanier.appendChild(div)
+        console.log("Le panier est vide")
 
-        //* Suppression de l'article ------------------------------------------------
-        bodyOption.addEventListener("click", function (event) {
-            suppressionArticle(event.target.id)
+    } else {
+        tableauPanier.innerHTML = ''
+        Object.values(panier).map((camera) => {
+
+            let tr = document.createElement("tr")
+            let name = document.createElement("td")
+            let lenses = document.createElement("td")
+            let quantite = document.createElement("td")
+            let prix = document.createElement("td")
+            let prixTotalCam = document.createElement("td")
+
+            afficheProduitPanier.appendChild(tr)
+            tr.appendChild(name)
+            tr.appendChild(lenses)
+            tr.appendChild(quantite)
+            tr.appendChild(prix)
+            tr.appendChild(prixTotalCam)
+
+            name.textContent = camera.name
+            lenses.textContent = camera.lenses
+            quantite.textContent = camera.quantity
+            prix.textContent = camera.price / 100 + " €"
+            prixTotalCam.textContent = camera.price / 100 * camera.quantity + " €"
+
+
+            let emptyButton = document.getElementById("empty")
+
+            emptyButton.addEventListener("click", function () {
+                localStorage.clear("prixPanier")
+                window.location.reload()
+            })
+
+            console.log("Contenu du panier : ")
+            console.log(panier)
         })
+    }
+}
+affichagePanier()
 
-        //*  FlowChart-Hiérarchisation------------------------------------------------------
-        tableCart.appendChild(articleBody)
-        articleBody.appendChild(articleBodyLigne)
-        articleBodyLigne.appendChild(articleBodytitle)
-        articleBodytitle.appendChild(articleBodyImg)
-        articleBodyLigne.appendChild(articleBodyNom)
-        articleBodyLigne.appendChild(articleBodyPrix)
-        articleBodyLigne.appendChild(articleBodyOption)
-        articleBodyOption.appendChild(bodyOption)
-        tableCart.appendChild(tableCartFootTitle)
-        tableCartFootTitle.appendChild(tableCartFootTotal)
-        tableCartFootTotal.appendChild(tableCartFootTotalCost)
 
-        //* Attribution des données aux élements créees -------------------------------
-        articleBodyImg.src = article.imageUrl
-        articleBodyNom.innerHTML = '<h4>Model : ' + article.name + '</h4>'
-        articleBodyPrix.textContent = formatPrix(article.price) + '€'
-        finalCost(total)
-    })
+
+
+//* Variables d'informations client -------------------------------------------------
+let orderButton = document.querySelector(".order-submit")
+let validationButton = document.querySelector(".validation")
+let firstName = document.querySelector("#firstName")
+let lastName = document.querySelector("#lastName")
+let eMail = document.querySelector("#inputEmail")
+let telephoneNumber = document.querySelector("#telephoneNumber")
+let address = document.querySelector("#inputAddress")
+let city = document.querySelector("#inputCity")
+
+
+//* Création de l'objet général client
+function Client(firstName, lastName, eMail, telephoneNumber, address, city) {
+    (this.firstName = firstName),
+        (this.lastName = lastName),
+        (this.eMail = eMail),
+        (this.telephoneNumber = telephoneNumber),
+        (this.address = address),
+        (this.city = city);
 }
 
+//*création d'un tableau contenant les articles commandés------------------------
+let panier = JSON.parse(localStorage.getItem("panier"))
+let listIdProduct = []
+
+function cart(panier){
+for (let i = 0; i < panier.length; i++) {
+    listIdProduct.push(panier[i].id)
+}
+}
+localStorage.setItem("products", JSON.stringify(listIdProduct))
+listIdProduct = localStorage.getItem("products")
+listIdProduct = JSON.parse(listIdProduct)
 
 
+//* fonction de validation des input---------------------------------------------
+function validationInput() {
+    let regexEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/
+    if (firstName.value.length === 0) {
+        alert("Merci d'entrer un prénom valide.")
+    } else if (lastName.value.length === 0) {
+        alert("Merci d'entrer un nom valide.")
+    } else if (eMail.value.length === 0 || !regexEmail.test(eMail.value)) {
+        alert("Merci d'entrer une adresse email valide")
+        eMail.style.borderColor = "red"
+    } else if (address.value.length === 0) {
+        alert("Merci d'entrer une adresse valide.")
+    } else if (telephoneNumber.value.length === 0) {
+        alert("Merci d'entrer un numéro valide.")
+    } else if (city.value.length === 0) {
+        alert("Merci d'entrer une ville valide.")
+    } else {
+        alert("Vous pouvez valider votre commande")
+        validationButton.classList.remove("disabled")
+        send() // Envoie au serveur
+    }
+}
 
+//* function event au clic-----------------------------------------------------
+orderButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    validationInput()
+})
+
+//*création fonction send-----------------------------------------------------
+function send() {
+    // Création nouveau client
+    let newClient = new Client(
+        firstName.value,
+        lastName.value,
+        eMail.value,
+        telephoneNumber.value,
+        address.value,
+        city.value
+    );
+    //* Fetch POST ----------------------------------------------------------------
+    fetch("https://oc-p5-api.herokuapp.com/api/cameras/order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            contact: {
+                firstName: newClient.firstName,
+                lastName: newClient.lastName,
+                address: newClient.address,
+                city: newClient.city,
+                email: newClient.eMail,
+            },
+            products: listIdProduct,
+        }),
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then((data) => {
+            localStorage.setItem("orderInfos", JSON.stringify(data))
+        })
+        .catch((error) => console.log("erreur de type : ", error))
+}

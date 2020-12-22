@@ -13,7 +13,7 @@ body {
         border: 1px solid $annonce-bg;
         border-radius: 0px 0px 25px 25px;
         nav {
-            padding: 1em;
+            padding: 0.5em;
             .logo {
                 width: 60%;
 
@@ -72,7 +72,7 @@ body {
         border-radius: 25px 25px 0px 0px;
         background-color: $footer-bg;
        min-height : 5em;
-        max-height: 13em;
+        max-height: 11em;
         @include text-shadow;
 
         .minilogo {
@@ -92,9 +92,10 @@ body {
                 transform: scale(1.5);
             }
         }
+        
 
         .shake {
-            font-size: 1.5em;
+            font-size: 1em;
         }
 
         .shake:hover {
