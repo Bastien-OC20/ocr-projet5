@@ -73,7 +73,6 @@ let validationButton = document.querySelector(".validation")
 let firstName = document.querySelector("#firstName")
 let lastName = document.querySelector("#lastName")
 let eMail = document.querySelector("#inputEmail")
-let telephoneNumber = document.querySelector("#telephoneNumber")
 let address = document.querySelector("#inputAddress")
 let city = document.querySelector("#inputCity")
 
@@ -83,7 +82,6 @@ function Client(firstName, lastName, eMail, telephoneNumber, address, city) {
     (this.firstName = firstName),
         (this.lastName = lastName),
         (this.eMail = eMail),
-        (this.telephoneNumber = telephoneNumber),
         (this.address = address),
         (this.city = city);
 }
@@ -96,28 +94,38 @@ function cart(panier){
 for (let i = 0; i < panier.length; i++) {
     listIdProduct.push(panier[i].id)
 }
-}
+
 localStorage.setItem("products", JSON.stringify(listIdProduct))
 listIdProduct = localStorage.getItem("products")
 listIdProduct = JSON.parse(listIdProduct)
-
+}
 
 //* fonction de validation des input---------------------------------------------
 function validationInput() {
+    let regexFirstName = /^[A-Z]{1}[A-Za-zÀ-ÿ\ -]+$/ 
+    let regexLastName = /^[A-Z]{1}[a-z\ ]+$/
     let regexEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/
-    if (firstName.value.length === 0) {
+    let regexPhone = /^([\+]?33[-]?|[0])?[1-9][0-9]{8}$/
+    let regexAddress = /^[0-9]{1,4}[ ,-][ A-Za-zÀ-ÿ0-9\-]+$/
+    let regexCity = /^[A-Z]{1}[a-zA-Z\- ]+$/
+    if (firstName.value.length === 0 || !regexFirstName.test(firstName.value)) {
         alert("Merci d'entrer un prénom valide.")
-    } else if (lastName.value.length === 0) {
+        firstName.style.borderColor = "red"
+    } else if (lastName.value.length === 0 || !regexLastName.test(lastName.value)) {
         alert("Merci d'entrer un nom valide.")
+        lastName.style.borderColor = "red"
     } else if (eMail.value.length === 0 || !regexEmail.test(eMail.value)) {
         alert("Merci d'entrer une adresse email valide")
         eMail.style.borderColor = "red"
-    } else if (address.value.length === 0) {
+    } else if (address.value.length === 0 || !regexAddress.test(address.value)) {
         alert("Merci d'entrer une adresse valide.")
-    } else if (telephoneNumber.value.length === 0) {
+        address.style.borderColor = "red"
+    } else if (telephoneNumber.value.length === 0 || regexPhone.test(telephoneNumber.value)) {
         alert("Merci d'entrer un numéro valide.")
-    } else if (city.value.length === 0) {
+        telephoneNumber.style.borderColor = "red"
+    } else if (city.value.length === 0 || !regexCity.test(city.value)) {
         alert("Merci d'entrer une ville valide.")
+        city.style.borderColor = "red"
     } else {
         alert("Vous pouvez valider votre commande")
         validationButton.classList.remove("disabled")

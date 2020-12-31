@@ -46,13 +46,12 @@ function affichageProduit() {
     //* sélection des objectifs---------------------------------------------------
     let selectionLense = document.getElementById("lense-select").addEventListener("change", function (e) {
         selectionLense = e.target.value
-        alert("L'objectif est bien séléctionné")
-    });
+    })
 
     //* sélection de la quantité---------------------------------------------------
     let quantiteProduit = document.getElementById("quantiteProduit").addEventListener('change', function (e) {
         quantiteProduit = e.target.value
-    });
+    })
 
     //* bouton ajouter au panier------------------------------------------------------
     let ajouterPanier = document.getElementById("btn-ajouter")
@@ -87,7 +86,7 @@ function prixTotal() {
     if (prixDuPanier == 0) {
         localStorage.setItem("prixTotal", prixDuPanier + (price / 100 * camera.quantity))
     } else {
-        localStorage.setItem("prixTotal", price / 100 * camera.quantity)
+        localStorage.setItem("prixTotal", prixDuPanier + (price / 100 * camera.quantity))
     }
 }
 
